@@ -28,9 +28,8 @@ namespace MyFortuneAPI.Controllers
             ViewBag.Datetime = DateTime.Now.ToString();
             ViewBag.Title = "Fortune Teller API";
             ViewBag.Message = "Today we have the power to tell you a fortune!";
-            ViewBag.Use = "[URL]/truth will reveal wisdom beyond your expectations!";
+            ViewBag.Use = "uri/truth -  will reveal wisdom beyond your expectations!";
 
-            
             return View();
         }
 
@@ -56,24 +55,32 @@ namespace MyFortuneAPI.Controllers
             return _fortuneRepository.GetFortuneById(id);
         }
 
-        
+
+        // GET /truth/{id}
+        [HttpGet("/truth/version")]
+        public Fortune GetVersion()
+        {
+            var rv = new Fortune { id = 999, phrase = "Author: Steve Sparks, Version: 0.3 " };
+            return rv;
+        }
+
 
         // POST api/values
-       // [HttpPost]
-       // public void Post([FromBody]string value)
-       // {
-       // }
+        // [HttpPost]
+        // public void Post([FromBody]string value)
+        // {
+        // }
 
         // PUT api/values/5
-       // [HttpPut("{id}")]
-       // public void Put(int id, [FromBody]string value)
-      //  {
-       // }
+        // [HttpPut("{id}")]
+        // public void Put(int id, [FromBody]string value)
+        //  {
+        // }
 
         // DELETE api/values/5
-       // [HttpDelete("{id}")]
-       // public void Delete(int id)
-       // {
-       // }
+        // [HttpDelete("{id}")]
+        // public void Delete(int id)
+        // {
+        // }
     }
 }
