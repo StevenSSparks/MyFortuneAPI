@@ -9,9 +9,7 @@ using MyFortuneAPI.Models;
 namespace MyFortuneAPI.Controllers
 {
     
-    
-
-    [Route("/truth")]
+    [Route("/")]
     public class FortuneTellerController : Controller
     {
 
@@ -22,7 +20,7 @@ namespace MyFortuneAPI.Controllers
             _fortuneRepository = fortuneRepository;
         }
 
-        [HttpGet("/")]
+        [HttpGet("/info")]
         public ViewResult Index()
         {
             ViewBag.Datetime = DateTime.Now.ToString();
@@ -46,8 +44,6 @@ namespace MyFortuneAPI.Controllers
             return _fortuneRepository.GetAllFortunes();
         }
 
-        
-
         // GET /truth/{id}
         [HttpGet("/truth/{id}")]
         public Fortune Get(int id)
@@ -56,31 +52,12 @@ namespace MyFortuneAPI.Controllers
         }
 
 
-        // GET /truth/{id}
+        // GET /truth/version
         [HttpGet("/truth/version")]
         public Fortune GetVersion()
         {
             var rv = new Fortune { id = 999, phrase = "Author: Steve Sparks, Version: 0.3 " };
             return rv;
         }
-
-
-        // POST api/values
-        // [HttpPost]
-        // public void Post([FromBody]string value)
-        // {
-        // }
-
-        // PUT api/values/5
-        // [HttpPut("{id}")]
-        // public void Put(int id, [FromBody]string value)
-        //  {
-        // }
-
-        // DELETE api/values/5
-        // [HttpDelete("{id}")]
-        // public void Delete(int id)
-        // {
-        // }
     }
 }
