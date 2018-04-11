@@ -10,10 +10,7 @@ namespace MyFortuneAPI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
@@ -35,11 +32,11 @@ namespace MyFortuneAPI
            
             app.UseStaticFiles();
 
-                // Enable the Swagger UI middleware and the Swagger generator
-                app.UseSwaggerUi(typeof(Startup).GetTypeInfo().Assembly, settings =>
-                {
-                    settings.GeneratorSettings.DefaultPropertyNameHandling = PropertyNameHandling.CamelCase;
-                });
+            // Enable the Swagger UI middleware and the Swagger generator
+            app.UseSwaggerUi(typeof(Startup).GetTypeInfo().Assembly, settings =>
+                            {
+                                settings.GeneratorSettings.DefaultPropertyNameHandling = PropertyNameHandling.CamelCase;
+                            });
 
            
             app.UseMvc();

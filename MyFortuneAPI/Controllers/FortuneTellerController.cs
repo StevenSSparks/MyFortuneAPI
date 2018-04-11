@@ -19,8 +19,8 @@ namespace MyFortuneAPI.Controllers
         {
             _fortuneRepository = fortuneRepository;
         }
-
-        [HttpGet("/info")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        [HttpGet("/")]
         public ViewResult Index()
         {
             ViewBag.Datetime = DateTime.Now.ToString();
